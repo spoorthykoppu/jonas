@@ -1,0 +1,69 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Toppings Column -->
+    <ng-container matColumnDef="Toppings">
+      <mat-header-cell *matHeaderCellDef>Toppings</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Toppings}}
+
+      </mat-cell>
+    </ng-container>
+
+
+
+    <!-- Small Column -->
+    <ng-container matColumnDef="checkSmall">
+      <mat-header-cell *matHeaderCellDef> Small </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+
+               
+                <mat-checkbox #ref [checked]="element.checkSmall"
+                (change)="onChange($event); true">
+                </mat-checkbox>
+       </mat-cell>
+    </ng-container>
+
+    <!-- Medium Column -->
+    <ng-container matColumnDef="checkMedium">
+      <mat-header-cell *matHeaderCellDef> Medium </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+        <mat-checkbox [(ngModel)]="element.checkMedium"
+(change)="onChange1($event); true">
+                </mat-checkbox>
+    
+         </mat-cell>
+    </ng-container>
+
+    <!-- Large Column -->
+    <ng-container matColumnDef="checkLarge">
+      <mat-header-cell *matHeaderCellDef> Large </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [(ngModel)]="element.checkLarge">
+
+                </mat-checkbox>
+     
+         </mat-cell>
+    </ng-container>
+    
+<ng-container matColumnDef="checkELarge">
+      <mat-header-cell *matHeaderCellDef> Extra Large </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [(ngModel)]="element.checkELarge">
+
+                </mat-checkbox>
+     
+         </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (click)="row.highlighted = !row.highlighted" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
+  </mat-table>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
